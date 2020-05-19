@@ -4,10 +4,11 @@ from pprint import pprint as p
 import waitress
 
 
-def setupWaitressServer():
+def setupWaitressServer(flaskApp):
 
 	waitress.serve(flaskApp, host='0.0.0.0', port=8000)
-    flaskApp.run()
+	flaskApp.run()
+
 
 
 def setupFlaskServer():
@@ -46,8 +47,12 @@ def setupFlaskServer():
 		# 			<p></p>
 		# 			<img src="./frontend/assets/regal-cat.jpeg" alt="regal cat" />"""
 
+
 	if __name__ == '__main__':
-		setupWaitressServer
+		
+		# waitress.serve(flaskApp, host='0.0.0.0', port=8000)
+		# flaskApp.run()
+		setupWaitressServer(flaskApp)
 
 
 setupFlaskServer()
