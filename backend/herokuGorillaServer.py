@@ -4,7 +4,13 @@ from pprint import pprint as p
 import waitress
 
 
-def setupServer():
+def setupWaitressServer():
+
+	waitress.serve(flaskApp, host='0.0.0.0', port=8000)
+    flaskApp.run()
+
+
+def setupFlaskServer():
 
 	flaskApp = Flask(__name__, static_folder='../frontend/', template_folder='../frontend/htmlTemplates')
 	flaskApp.config['TEMPLATES_AUTO_RELOAD'] = True
@@ -40,12 +46,8 @@ def setupServer():
 		# 			<p></p>
 		# 			<img src="./frontend/assets/regal-cat.jpeg" alt="regal cat" />"""
 
-	waitress.serve(flaskApp, host='0.0.0.0', port=8000)
-    flaskApp.run()
+	if __name__ == '__main__':
+		setupWaitressServer
 
 
-
-if __name__ == '__main__':
-
-    setupServer()
-	
+setupFlaskServer()
