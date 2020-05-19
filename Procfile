@@ -1,1 +1,1 @@
-web: waitress-serve --port=$PORT backend.herokuHelloPythonServer:flaskApp
+web: waitress-serve --port=$PORT backend.herokuGorillaServer:flaskApp
