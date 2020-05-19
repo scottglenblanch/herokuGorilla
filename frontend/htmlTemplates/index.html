@@ -8,11 +8,13 @@
 </head>
 
 <body>
-	<p>GORILLA</p>
-	<p>Spreadsheet to reconcile:
-		<button onclick="publicClickFunction()">Public</button>
-		<button onclick="privateClickFunction()">Private</button>
-	</p>
+	<div>
+		<div id=divTitle><img src="frontend/assets/freeGorillaW.png" width="70">GORILLA</div>
+	</div>
+	<div id=divBody>Spreadsheet to reconcile:
+		<span onclick="publicClickFunction()">PUBLIC</span>
+		<span onclick="privateClickFunction()">PRIVATE</span>
+	</div>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.js"></script>
 	<script src="./frontend/browserJavascript/browserJavascript.js"></script>
 </body>
