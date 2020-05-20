@@ -66,8 +66,12 @@ function privateClickFunction() {
 	sendPostRequestFromBrowser('private');
 }
 
-function reconcileClickFunction() {
+function reconcileClick2Function() {
 	window.location = '/';
+}
+
+function reconcileClickFunction() {
+	
 }
 
 

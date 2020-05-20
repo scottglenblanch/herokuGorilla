@@ -31,14 +31,14 @@ def setupFlaskServer(flaskApp):
 			requestObj = request.json
 
 			if requestObj['spreadsheetType'] == 'public':
-				return render_template('reconcilePublic.html')
+				return render_template('main/frontend/htmlTemplates/reconcileArrays/reconcilePublic.html')
 			else:
-				return render_template('reconcilePrivate.html')
+				return render_template('main/frontend/htmlTemplates/reconcileArrays/reconcilePrivate.html')
 
 
 	@flaskApp.route('/')
 	def returnMainPage():
-		return render_template('index.html')
+		return render_template('main/frontend/htmlTemplates/index.html')
 		# return """	<p>Spreadsheet to reconcile:</p>
 		# 			<button onclick="publicClickFunction()">Public</button>
 		# 			<button onclick="privateClickFunction()">Private</button>
@@ -48,11 +48,12 @@ def setupFlaskServer(flaskApp):
 
 	if __name__ == '__main__':
 		
-		# waitress.serve(flaskApp, host='0.0.0.0', port=8000)
-		# flaskApp.run()
 		setupWaitressServer(flaskApp)
 
 
 
-flaskApp = Flask(__name__, static_folder='../frontend/', template_folder='../frontend/htmlTemplates')
+flaskApp = Flask(__name__, template_folder='../../', static_folder='../../main')
+# p(flaskApp.static_folder)
+# p(flaskApp.template_folder)
+# p(flaskApp.static_url_path)
 setupFlaskServer(flaskApp)
