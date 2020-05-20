@@ -2,20 +2,34 @@ function c(textToLogToConsole) {
 	console.log(textToLogToConsole)
 }
 
-async function receiveGetResponseFromServer() {
-	async function sendGetRequestFromBrowser() {
-		try {
-			return (await axios.get('/datarequests')).data
-		} catch (e) {
-			return null;
-		}
-	}
+// async function receiveResponseForGetRequestFromServer() {
+// 	async function sendGetRequestFromBrowser() {
+// 		try {
+// 			return (await axios.get('/datarequests')).data
+// 		} catch (e) {
+// 			return null;
+// 		}
+// 	}
 
-	var dataReceivedFromServer = await sendGetRequestFromBrowser();
-	var jsonReceivedFromServer = JSON.stringify(dataReceivedFromServer)
+// 	var dataReceivedFromServer = await sendGetRequestFromBrowser();
+// 	var jsonReceivedFromServer = JSON.stringify(dataReceivedFromServer)
 
-	c(`Received data from server from GET request: ${jsonReceivedFromServer}`)
-};
+// 	c(`Received data from server from GET request: ${jsonReceivedFromServer}`)
+// };
+
+
+function sendRequest(requestType, dataWithRequest) {
+		axios({method: requestType, url: '/datarequests', data: dataWithRequest
+	}).then((responseData) => {
+		console.log(`Received data from server from 1 ${requestType} request: ${responseData}`);
+	}, (error) => {
+		console.log(error);
+	});
+}
+
+
+
+
 
 
 function sendPostRequestFromBrowser(spreadsheetType) {
@@ -62,7 +76,7 @@ function publicClickFunction() {
 
 
 function privateClickFunction() {
-	receiveGetResponseFromServer()
+	sendRequest('get', {});
 	sendPostRequestFromBrowser('private');
 }
 
@@ -71,7 +85,7 @@ function reconcileClick2Function() {
 }
 
 function reconcileClickFunction() {
-	
+
 }
 
 

@@ -4,12 +4,6 @@ from pprint import pprint as p
 import waitress
 
 
-def setupWaitressServer(flaskApp):
-
-	waitress.serve(flaskApp, host='0.0.0.0', port=8000)
-	flaskApp.run()
-
-
 def setupFlaskServer(flaskApp):
 
 	flaskApp.config['TEMPLATES_AUTO_RELOAD'] = True
@@ -48,7 +42,10 @@ def setupFlaskServer(flaskApp):
 
 	if __name__ == '__main__':
 		
-		setupWaitressServer(flaskApp)
+		# setupWaitressServer(flaskApp)
+		# waitress.serve(flaskApp, host='0.0.0.0', port=8000)
+		p('in main')
+		flaskApp.run()
 
 
 
