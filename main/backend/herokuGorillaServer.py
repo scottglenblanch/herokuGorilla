@@ -7,7 +7,7 @@ import waitress
 def setupFlaskServer(flaskApp):
 
 	flaskApp.config['TEMPLATES_AUTO_RELOAD'] = True
-
+	flaskAppStatus = 'variable not set in main...'
 
 	@flaskApp.route('/datarequests', methods=['GET', 'POST'])
 	def datarequests():
@@ -32,7 +32,7 @@ def setupFlaskServer(flaskApp):
 
 	@flaskApp.route('/')
 	def returnMainPage():
-		return render_template('main/frontend/htmlTemplates/index.html')
+		return render_template('main/frontend/htmlTemplates/index.html', flaskAppStatus=flaskAppStatus)
 		# return """	<p>Spreadsheet to reconcile:</p>
 		# 			<button onclick="publicClickFunction()">Public</button>
 		# 			<button onclick="privateClickFunction()">Private</button>
@@ -44,7 +44,7 @@ def setupFlaskServer(flaskApp):
 		
 		# setupWaitressServer(flaskApp)
 		# waitress.serve(flaskApp, host='0.0.0.0', port=8000)
-		p('in main')
+		flaskAppStatus = 'set in main'
 		flaskApp.run()
 
 
