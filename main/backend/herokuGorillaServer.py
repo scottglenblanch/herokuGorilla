@@ -7,7 +7,7 @@ import waitress
 def setupFlaskServer(flaskApp):
 
 	flaskApp.config['TEMPLATES_AUTO_RELOAD'] = True
-	flaskAppStatus = 'variable not set in main...'
+	flaskAppStatus = ''
 
 	@flaskApp.route('/datarequests', methods=['GET', 'POST'])
 	def datarequests():
@@ -42,15 +42,11 @@ def setupFlaskServer(flaskApp):
 
 	if __name__ == '__main__':
 		
-		# setupWaitressServer(flaskApp)
 		# waitress.serve(flaskApp, host='0.0.0.0', port=8000)
-		flaskAppStatus = 'set in main'
+		flaskAppStatus = '__name__ = __main__'
 		flaskApp.run()
 
 
 
 flaskApp = Flask(__name__, template_folder='../../', static_folder='../../main')
-# p(flaskApp.static_folder)
-# p(flaskApp.template_folder)
-# p(flaskApp.static_url_path)
 setupFlaskServer(flaskApp)
