@@ -21,9 +21,20 @@ function c(textToLogToConsole) {
 function sendRequest(requestType, dataWithRequest) {
 		axios({method: requestType, url: '/datarequests', data: dataWithRequest
 	}).then((responseData) => {
-		console.log(`Received data from server from 1 ${requestType} request: ${responseData}`);
+		
+		if (responseData.headers['content-type'].indexOf('text/html') >= 0) {
+			let parserObj = new DOMParser();
+			let responseDocumentObj = parserObj.parseFromString(responseData.data, 'text/html');
+			// c(responseDocumentObj.getElementById('divBody').innerHTML)
+			document.getElementById('divBody').innerHTML = responseDocumentObj.getElementById('divBody').innerHTML
+		}
+
+		
+
+		c(`Received data from server from 1 ${requestType} request: ${responseData}`);
+	
 	}, (error) => {
-		console.log(error);
+		c(error);
 	});
 }
 
@@ -84,8 +95,8 @@ function reconcileClick2Function() {
 	window.location = '/';
 }
 
-function reconcileClickFunction() {
-
+function loadPath(requestType, pathToLoad) {
+	sendRequest(requestType, {'htmlPathToLoad': pathToLoad})
 }
 
 
