@@ -32,7 +32,7 @@ def setupFlaskServer(flaskApp):
 
 	@flaskApp.route('/')
 	def returnMainPage():
-		return render_template('main/frontend/htmlTemplates/index.html', flaskAppStatus=flaskAppStatus)
+		return render_template('main/frontend/htmlTemplates/index.html')
 		# return """	<p>Spreadsheet to reconcile:</p>
 		# 			<button onclick="publicClickFunction()">Public</button>
 		# 			<button onclick="privateClickFunction()">Private</button>
@@ -42,7 +42,7 @@ def setupFlaskServer(flaskApp):
 
 	if __name__ == '__main__':
 		
-		flaskAppStatus = '__name__ = __main__'
+		flaskAppStatus = 'this was run from commandline'
 		flaskApp.run()
 
 
