@@ -1,7 +1,7 @@
 import json
 from flask import Flask, request, render_template, Response
 from pprint import pprint as p
-# import waitress
+
 
 
 def setupFlaskServer(flaskApp):
@@ -42,7 +42,6 @@ def setupFlaskServer(flaskApp):
 
 	if __name__ == '__main__':
 		
-		# waitress.serve(flaskApp, host='0.0.0.0', port=8000)
 		flaskAppStatus = '__name__ = __main__'
 		flaskApp.run()
 
