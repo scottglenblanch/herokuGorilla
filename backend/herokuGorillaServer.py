@@ -49,5 +49,5 @@ def setupFlaskServer(flaskApp):
 
 
 
-flaskApp = Flask(__name__, template_folder='../../', static_folder='../../frontend')
+flaskApp = Flask(__name__, template_folder='../', static_folder='../frontend')
 setupFlaskServer(flaskApp)
