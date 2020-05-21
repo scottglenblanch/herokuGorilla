@@ -7,7 +7,7 @@ from pprint import pprint as p
 def setupFlaskServer(flaskApp):
 
 	flaskApp.config['TEMPLATES_AUTO_RELOAD'] = True
-	flaskAppStatus = ', hosted as a Heroku app'
+	flaskAppLoadProcess = ', hosted as a Heroku app'
 
 	@flaskApp.route('/datarequests', methods=['GET', 'POST'])
 	def datarequests():
@@ -34,7 +34,7 @@ def setupFlaskServer(flaskApp):
 
 	@flaskApp.route('/')
 	def returnMainPage():
-		return render_template('frontend/htmlTemplates/index.html')
+		return render_template('frontend/htmlTemplates/index.html', valueFromFlask=flaskAppLoadProcess)
 		# return """	<p>Spreadsheet to reconcile:</p>
 		# 			<button onclick="publicClickFunction()">Public</button>
 		# 			<button onclick="privateClickFunction()">Private</button>
@@ -44,7 +44,7 @@ def setupFlaskServer(flaskApp):
 
 	if __name__ == '__main__':
 		
-		flaskAppStatus = ''
+		flaskAppLoadProcess = ''
 		flaskApp.run()
 
 
