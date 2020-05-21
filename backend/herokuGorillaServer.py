@@ -21,6 +21,7 @@ def setupFlaskServer(flaskApp):
 
 		if request.method == 'GET':
 			dataToSendToFrontend = {
+				'otherInfo': str(flaskApp.config['SERVER_NAME']),
 				'cat eyes': 'yellow',
 				'collar': 'red'
 			}
@@ -34,7 +35,7 @@ def setupFlaskServer(flaskApp):
 			if 'processToRun' in requestObj:
 				p(requestObj['processToRun'])
 				
-				from .reconcileArrays import reconcileArrays
+				# from .reconcileArrays import reconcileArrays
 				
 				return render_template(requestObj['htmlPathToLoad'], valueFromBackend=urlOfSheet)
 			else:
@@ -60,8 +61,8 @@ def setupFlaskServer(flaskApp):
 	if __name__ == '__main__':
 		
 		flaskAppLoadProcess = ''
-		p('asdf')
 		flaskApp.run()
+		
 
 flaskApp = Flask(__name__, template_folder='../', static_folder='../frontend')
 setupFlaskServer(flaskApp)
