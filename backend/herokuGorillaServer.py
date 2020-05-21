@@ -62,7 +62,7 @@ def setupFlaskServer(flaskApp):
 		flaskAppLoadProcess = ''
 		flaskApp.run()
 
-
+	print(waitress)
 
 flaskApp = Flask(__name__, template_folder='../', static_folder='../frontend')
 setupFlaskServer(flaskApp)
