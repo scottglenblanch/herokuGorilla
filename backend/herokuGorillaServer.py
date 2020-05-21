@@ -1,5 +1,6 @@
 import json
 from flask import Flask, request, render_template, Response
+import os
 from pprint import pprint as p
 
 
@@ -8,6 +9,7 @@ def setupFlaskServer(flaskApp):
 
 	flaskApp.config['TEMPLATES_AUTO_RELOAD'] = True
 	flaskAppLoadProcess = ', hosted as a Heroku app'
+	urlOfPublicGoogleSheets = os.environ.get('urlOfPublicGoogleSheet', ' N/A')
 
 	@flaskApp.route('/datarequests', methods=['GET', 'POST'])
 	def datarequests():
@@ -34,7 +36,7 @@ def setupFlaskServer(flaskApp):
 
 	@flaskApp.route('/')
 	def returnMainPage():
-		return render_template('frontend/htmlTemplates/index.html', valueFromFlask=flaskAppLoadProcess)
+		return render_template('frontend/htmlTemplates/index.html', valueFromFlask=urlOfPublicGoogleSheets)
 		# return """	<p>Spreadsheet to reconcile:</p>
 		# 			<button onclick="publicClickFunction()">Public</button>
 		# 			<button onclick="privateClickFunction()">Private</button>

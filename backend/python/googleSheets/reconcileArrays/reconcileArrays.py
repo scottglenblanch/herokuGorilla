@@ -2,9 +2,9 @@ from pathlib import Path
 pathToThisPythonFile = Path(__file__).resolve()
 import sys
 sys.path.append(str(Path(pathToThisPythonFile.parents[2], 'myPythonLibrary')))
-import _myPyFunc
-sys.path.append(str(Path(_myPyFunc.getPathUpFolderTree(pathToThisPythonFile, 'googleSheets'), 'myGoogleSheetsLibrary')))
-import _myGoogleSheetsFunc, _myGspreadFunc
+import horseStable.clydesdale as clydesdale
+import googleSheets.myGoogleSheetsLibrary._myGoogleSheetsFunc as _myGoogleSheetsFunc
+import googleSheets.myGoogleSheetsLibrary._myGspreadFunc as _myGspreadFunc
 
 from pprint import pprint as p
 import gspread
