@@ -34,7 +34,7 @@ def setupFlaskServer(flaskApp):
 			if 'processToRun' in requestObj:
 				p(requestObj['processToRun'])
 				
-				import reconcileArrays
+				from .reconcileArrays import reconcileArrays
 				
 				return render_template(requestObj['htmlPathToLoad'], valueFromBackend=urlOfSheet)
 			else:

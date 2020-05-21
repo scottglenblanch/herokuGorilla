@@ -10,7 +10,7 @@
 # import gspread
 
 
-def main():
+def reconcileArraysMain():
     print('reconciling')
 
     # pathToRepos = _myPyFunc.getPathUpFolderTree(pathToThisPythonFile, 'repos')
@@ -64,7 +64,7 @@ def main():
 
 
 
-main()
+reconcileArraysMain()
 
 
 
