@@ -60,9 +60,8 @@ def setupFlaskServer(flaskApp):
 	if __name__ == '__main__':
 		
 		flaskAppLoadProcess = ''
+		p('asdf')
 		flaskApp.run()
-
-	print(waitress)
 
 flaskApp = Flask(__name__, template_folder='../', static_folder='../frontend')
 setupFlaskServer(flaskApp)
