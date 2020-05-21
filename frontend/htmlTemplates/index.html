@@ -2,7 +2,7 @@
 <html>
 
 <head>
-	<title>Gorilla, hosted as a Heroku app</title>
+	<title>Gorilla{{flaskAppStatus}}</title>
 	<meta charset="utf-8" />
 	<link rel="stylesheet" type="text/css" href="frontend/css/styles.css">
 	<link rel="shortcut icon" href="frontend/assets/favicon.ico">
@@ -15,7 +15,6 @@
 	<div id=divBody>
 		<span onclick="loadPath('post', 'frontend/htmlTemplates/1/reconcileArrays.html')">Reconcile</span>
 	</div>
-	<div>{{flaskAppStatus}}</div>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.js"></script>
 	<script src="frontend/browserJavascript/browserJavascript.js"></script>
 </body>

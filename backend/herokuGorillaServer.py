@@ -7,7 +7,7 @@ from pprint import pprint as p
 def setupFlaskServer(flaskApp):
 
 	flaskApp.config['TEMPLATES_AUTO_RELOAD'] = True
-	flaskAppStatus = ''
+	flaskAppStatus = ', hosted as a Heroku app'
 
 	@flaskApp.route('/datarequests', methods=['GET', 'POST'])
 	def datarequests():
@@ -44,7 +44,7 @@ def setupFlaskServer(flaskApp):
 
 	if __name__ == '__main__':
 		
-		flaskAppStatus = 'this was run from commandline'
+		flaskAppStatus = ''
 		flaskApp.run()
 
 
