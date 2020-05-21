@@ -22,16 +22,18 @@ function sendRequest(requestType, dataWithRequest) {
 		axios({method: requestType, url: '/datarequests', data: dataWithRequest
 	}).then((responseData) => {
 		
-		if (responseData.headers['content-type'].indexOf('text/html') >= 0) {
+		if (responseData['headers']['content-type'].indexOf('text/html') >= 0) {
 			let parserObj = new DOMParser();
 			let responseDocumentObj = parserObj.parseFromString(responseData.data, 'text/html');
 			// c(responseDocumentObj.getElementById('divBody').innerHTML)
-			document.getElementById('divBody').innerHTML = responseDocumentObj.getElementById('divBody').innerHTML
+			responseDataBeforeStringify = responseDocumentObj.getElementById('divBody').innerHTML
+			document.getElementById('divBody').innerHTML = responseDataBeforeStringify
+		}
+		else {
+			responseDataBeforeStringify = responseData['data']
 		}
 
-		
-
-		c(`Received data from server from 1 ${requestType} request: ${responseData}`);
+		c(`Received data from server by way of a ${requestType} request: ${JSON.stringify(responseDataBeforeStringify)}`);
 	
 	}, (error) => {
 		c(error);
@@ -79,20 +81,9 @@ function sendPostRequestFromBrowser(spreadsheetType) {
 
 
 
-
-
-function publicClickFunction() {
-	sendPostRequestFromBrowser('public');
-}
-
-
-function privateClickFunction() {
+function reconcileClickFunction() {
 	sendRequest('get', {});
-	sendPostRequestFromBrowser('private');
-}
-
-function reconcileClick2Function() {
-	window.location = '/';
+	// window.location = '/';
 }
 
 function loadPath(requestType, pathToLoad) {

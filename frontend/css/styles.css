@@ -1,25 +1,26 @@
 body {
     font-family: "Open Sans";
 	font-weight: 900;
-	font-size: xx-large;
-	color: white;
 	background-color: rgb(21, 52, 75);
 }
 
 #divBody {
+	color: rgb(36, 120, 157);
+	font-size: xx-large;
 	padding-top: 50px;
-	color: rgb(36, 120, 157)
 }
 
 #divTitle {
-	font-size: 90px;
 	background-color: rgb(23, 26, 33);
+	color: white;
+	font-size: 90px;
 	padding: 50px;
 	text-align: center;
 }
 
 a {
-	color: rgb(36, 120, 157);
+	color: rgb(255, 255, 255);
+	cursor: pointer;
 	text-decoration: none;
 }
 
