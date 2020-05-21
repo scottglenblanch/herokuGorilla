@@ -8,8 +8,13 @@ from pprint import pprint as p
 def setupFlaskServer(flaskApp):
 
 	flaskApp.config['TEMPLATES_AUTO_RELOAD'] = True
-	flaskAppLoadProcess = ', hosted as a Heroku app'
-	urlOfPublicGoogleSheets = os.environ.get('urlOfPublicGoogleSheet', ' N/A')
+
+	urlOfSheet = os.environ.get('urlOfPublicGoogleSheet', 'https://www.google.com')
+	p(urlOfSheet)
+
+	# objToFrontend = {
+	# 	"urlOfSheet": os.environ.get('urlOfPublicGoogleSheet', 'URL not loaded')
+	# }
 
 	@flaskApp.route('/datarequests', methods=['GET', 'POST'])
 	def datarequests():
@@ -26,7 +31,15 @@ def setupFlaskServer(flaskApp):
 		if request.method == 'POST':
 			requestObj = request.json
 
-			return render_template(requestObj['htmlPathToLoad'])
+			if 'processToRun' in requestObj:
+				p(requestObj['processToRun'])
+				
+				import reconcileArrays
+				
+				return render_template(requestObj['htmlPathToLoad'], valueFromBackend=urlOfSheet)
+			else:
+				return render_template(requestObj['htmlPathToLoad'], valueFromBackend=urlOfSheet)
+
 
 			# if requestObj['spreadsheetType'] == 'public':
 			# 	return render_template('frontend/htmlTemplates/reconcileArrays/reconcilePublic.html')
@@ -36,7 +49,7 @@ def setupFlaskServer(flaskApp):
 
 	@flaskApp.route('/')
 	def returnMainPage():
-		return render_template('frontend/htmlTemplates/index.html', valueFromFlask=urlOfPublicGoogleSheets)
+		return render_template('frontend/htmlTemplates/index.html')
 		# return """	<p>Spreadsheet to reconcile:</p>
 		# 			<button onclick="publicClickFunction()">Public</button>
 		# 			<button onclick="privateClickFunction()">Private</button>
