@@ -8,7 +8,6 @@ def setupFlaskServer(flaskApp):
 
 	flaskApp.config['TEMPLATES_AUTO_RELOAD'] = True
 	flaskAppStatus = ''
-	htmlTemplatesPath = 'frontend/htmlTemplates/'
 
 	@flaskApp.route('/datarequests', methods=['GET', 'POST'])
 	def datarequests():
@@ -25,7 +24,7 @@ def setupFlaskServer(flaskApp):
 		if request.method == 'POST':
 			requestObj = request.json
 
-			return render_template(htmlTemplatesPath + requestObj['htmlPathToLoad'])
+			return render_template(requestObj['htmlPathToLoad'])
 
 			# if requestObj['spreadsheetType'] == 'public':
 			# 	return render_template('frontend/htmlTemplates/reconcileArrays/reconcilePublic.html')
@@ -50,5 +49,5 @@ def setupFlaskServer(flaskApp):
 
 
 
-flaskApp = Flask(__name__, template_folder='../', static_folder='../frontend')
+flaskApp = Flask(__name__, template_folder='../../', static_folder='../../frontend')
 setupFlaskServer(flaskApp)
