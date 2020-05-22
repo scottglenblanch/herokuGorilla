@@ -21,7 +21,7 @@ def setupFlaskServer(flaskApp):
 
 		if request.method == 'GET':
 			dataToSendToFrontend = {
-				'otherInfo': str(1),
+				'otherInfo': str(flaskApp.config['SERVER_NAME']),
 				'cat eyes': 'yellow',
 				'collar': 'red'
 			}
