@@ -13,7 +13,7 @@ body {
 #divTitle {
 	background-color: rgb(23, 26, 33);
 	color: white;
-	font-size: 90px;
+	font-size: 70px;
 	padding: 50px;
 	text-align: center;
 }
@@ -31,5 +31,5 @@ span {
 }
 
 img {
-	padding-right: 37px;
+	/* padding-right: 37px; */
 }
