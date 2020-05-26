@@ -33,12 +33,13 @@ def setupFlaskServer(flaskApp):
 				if request.url_root == 'http://127.0.0.1:5000/':
 
 					from reconcileArrays import reconcileArrays
-					return render_template(requestObj['htmlPathToLoad'], valueFromBackend=urlOfSheet)
-				else:
-					
-					from .reconcileArrays import reconcileArrays
 					return render_template(requestObj['htmlPathToLoad'][:-1], valueFromBackend=urlOfSheet)
-			
+
+				else:
+
+					from .reconcileArrays import reconcileArrays
+					return render_template(requestObj['htmlPathToLoad'], valueFromBackend=urlOfSheet)
+					
 			else:
 				return render_template(requestObj['htmlPathToLoad'], valueFromBackend=urlOfSheet)
 
