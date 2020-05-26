@@ -12,16 +12,12 @@ def setupFlaskServer(flaskApp):
 	urlOfSheet = os.environ.get('urlOfPublicGoogleSheet', 'https://www.google.com')
 	p(urlOfSheet)
 
-	# objToFrontend = {
-	# 	"urlOfSheet": os.environ.get('urlOfPublicGoogleSheet', 'URL not loaded')
-	# }
 
 	@flaskApp.route('/datarequests', methods=['GET', 'POST'])
 	def datarequests():
 
 		if request.method == 'GET':
 			dataToSendToFrontend = {
-				'otherInfo': str(flaskApp.config['SERVER_NAME']),
 				'cat eyes': 'yellow',
 				'collar': 'red'
 			}
@@ -33,11 +29,14 @@ def setupFlaskServer(flaskApp):
 			requestObj = request.json
 
 			if 'processToRun' in requestObj:
-				p(requestObj['processToRun'])
-				
-				# from .reconcileArrays import reconcileArrays
-				
-				return render_template(requestObj['htmlPathToLoad'], valueFromBackend=urlOfSheet)
+				if request.url_root == 'http://127.0.0.1:5000/':
+					from reconcileArrays import reconcileArrays
+
+
+					return render_template(requestObj['htmlPathToLoad'], valueFromBackend=urlOfSheet)
+				else:
+					from .reconcileArrays import reconcileArrays
+					return render_template(requestObj['htmlPathToLoad'][:-1], valueFromBackend=urlOfSheet)
 			else:
 				return render_template(requestObj['htmlPathToLoad'], valueFromBackend=urlOfSheet)
 
