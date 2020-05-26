@@ -29,22 +29,19 @@ def setupFlaskServer(flaskApp):
 			requestObj = request.json
 
 			if 'processToRun' in requestObj:
+
 				if request.url_root == 'http://127.0.0.1:5000/':
+
 					from reconcileArrays import reconcileArrays
-
-
 					return render_template(requestObj['htmlPathToLoad'], valueFromBackend=urlOfSheet)
 				else:
+					
 					from .reconcileArrays import reconcileArrays
 					return render_template(requestObj['htmlPathToLoad'][:-1], valueFromBackend=urlOfSheet)
+			
 			else:
 				return render_template(requestObj['htmlPathToLoad'], valueFromBackend=urlOfSheet)
 
-
-			# if requestObj['spreadsheetType'] == 'public':
-			# 	return render_template('frontend/htmlTemplates/reconcileArrays/reconcilePublic.html')
-			# else:
-			# 	return render_template('frontend/htmlTemplates/reconcileArrays/reconcilePrivate.html')
 
 
 	@flaskApp.route('/')
