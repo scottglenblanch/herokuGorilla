@@ -2,7 +2,7 @@ from pathlib import Path
 pathToThisPythonFile = Path(__file__).resolve()
 import sys
 # sys.path.append(str(Path(pathToThisPythonFile.parents[1], 'python')))
-# import horseStable.clydesdale as clydesdale
+
 # import googleSheets.myGoogleSheetsLibrary._myGoogleSheetsFunc as _myGoogleSheetsFunc
 # import googleSheets.myGoogleSheetsLibrary._myGspreadFunc as _myGspreadFunc
 
@@ -10,14 +10,35 @@ from pprint import pprint as p
 import gspread
 
 
-def reconcileArraysFunction():
+def reconcileArraysFunction(runningOnDevelopmentServerBoolean):
 
     # pathToRepos = _myPyFunc.getPathUpFolderTree(pathToThisPythonFile, 'repos')
 
-    if herokuGorillaServer.runningOnDevelopmentServer():
-        print('********************Running on development server****************')
+    if runningOnDevelopmentServerBoolean:
+        p('********************Running on development server****************')
+        
+        # this works 
+        # import reconcileArrays.hiPackage.hiModule
+        # reconcileArrays.hiPackage.hiModule.hiFunction()
+
+        # this works 
+        # from reconcileArrays.hiPackage import hiModule
+        # hiModule.hiFunction()
+        
+        # this works 
+        # from .hiPackage import hiModule
+        # hiModule.hiFunction()
+
+        # this works 
+        from ..hiPackage import hiModule
+        hiModule.hiFunction()
+
+
+
+
+        # import ../horseStable.clydesdale as clydesdale
     else:
-        print('********************Not running on development server****************')
+        p('********************Not running on development server****************')
 
     # arrayOfPartsToAddToPath = ['privateData', 'python', 'googleCredentials']
 
@@ -70,4 +91,4 @@ def reconcileArraysFunction():
 
 
 
-
+# reconcileArraysFunction(True)

@@ -42,7 +42,7 @@ def setupFlaskServer(flaskApp):
 				else:
 					from .reconcileArrays import reconcileArrays as reconcileArrays
 
-				reconcileArrays.reconcileArraysFunction()
+				reconcileArrays.reconcileArraysFunction(runningOnDevelopmentServer(request.url_root))
 				return render_template(requestObj['htmlPathToLoad'], valueFromBackend=urlOfSheet)
 
 			else:
