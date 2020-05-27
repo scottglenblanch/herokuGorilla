@@ -1,13 +1,13 @@
 from pathlib import Path
 pathToThisPythonFile = Path(__file__).resolve()
 import sys
-sys.path.append(str(Path(pathToThisPythonFile.parents[1], 'python')))
-import horseStable.clydesdale as clydesdale
-import googleSheets.myGoogleSheetsLibrary._myGoogleSheetsFunc as _myGoogleSheetsFunc
-import googleSheets.myGoogleSheetsLibrary._myGspreadFunc as _myGspreadFunc
+# sys.path.append(str(Path(pathToThisPythonFile.parents[1], 'python')))
+# import horseStable.clydesdale as clydesdale
+# import googleSheets.myGoogleSheetsLibrary._myGoogleSheetsFunc as _myGoogleSheetsFunc
+# import googleSheets.myGoogleSheetsLibrary._myGspreadFunc as _myGspreadFunc
 
 from pprint import pprint as p
-import gspread
+# import gspread
 
 
 def reconcileArraysFunction():
