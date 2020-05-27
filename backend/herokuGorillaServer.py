@@ -30,16 +30,18 @@ def setupFlaskServer(flaskApp):
 
 			if 'processToRun' in requestObj:
 
-				if request.url_root == 'http://127.0.0.1:5000/':
+				if any(strToFind in request.url_root for strToFind in ['127.0.0.1:5000', 'localhost:5000']):
 
-					from reconcileArrays import reconcileArrays
-					return render_template(requestObj['htmlPathToLoad'][:-1], valueFromBackend=urlOfSheet)
+					from reconcileArrays import reconcileArrays as reconcileArrays
 
 				else:
 
-					from .reconcileArrays import reconcileArrays
-					return render_template(requestObj['htmlPathToLoad'], valueFromBackend=urlOfSheet)
-					
+					from .reconcileArrays import reconcileArrays as reconcileArrays
+				
+
+				reconcileArrays.reconcileArraysFunction()
+				return render_template(requestObj['htmlPathToLoad'])
+
 			else:
 				return render_template(requestObj['htmlPathToLoad'], valueFromBackend=urlOfSheet)
 
@@ -59,7 +61,7 @@ def setupFlaskServer(flaskApp):
 		
 		flaskAppLoadProcess = ''
 		flaskApp.run()
-		
+
 
 flaskApp = Flask(__name__, template_folder='../', static_folder='../frontend')
 setupFlaskServer(flaskApp)
