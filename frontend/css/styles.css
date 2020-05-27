@@ -34,3 +34,9 @@ span {
 img {
 	/* padding-right: 37px; */
 }
+
+.divListItem {
+	padding: 10px;
+	padding-left: 60px;
+	
+}
