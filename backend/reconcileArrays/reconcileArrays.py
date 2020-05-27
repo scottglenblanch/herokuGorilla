@@ -13,7 +13,11 @@ import gspread
 def reconcileArraysFunction():
 
     # pathToRepos = _myPyFunc.getPathUpFolderTree(pathToThisPythonFile, 'repos')
-    print('*******************************************************')
+
+    if herokuGorillaServer.runningOnDevelopmentServer():
+        print('********************Running on development server****************')
+    else:
+        print('********************Not running on development server****************')
 
     # arrayOfPartsToAddToPath = ['privateData', 'python', 'googleCredentials']
 
