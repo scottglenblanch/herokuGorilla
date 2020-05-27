@@ -84,7 +84,7 @@ function sendPostRequestFromBrowser(spreadsheetType) {
 function reconcileClickFunction() {
 	sendRequest('get', {});
 	sendRequest('post', {
-		"htmlPathToLoad": "frontend/htmlTemplates/1/2/reconcilePublic.html",
+		"htmlPathToLoad": "frontend/htmlTemplates/reconcileArrays/publicOrPrivate/complete/complete.html",
 		"processToRun": ["python", "googleSheets", "reconcileArrays", "reconcileArrays.py"]
 	})
 	// window.location = '/';

@@ -40,7 +40,7 @@ def setupFlaskServer(flaskApp):
 				
 
 				reconcileArrays.reconcileArraysFunction()
-				return render_template(requestObj['htmlPathToLoad'])
+				return render_template(requestObj['htmlPathToLoad'], valueFromBackend=urlOfSheet)
 
 			else:
 				return render_template(requestObj['htmlPathToLoad'], valueFromBackend=urlOfSheet)
