@@ -4,6 +4,12 @@ import os
 from pprint import pprint as p
 
 
+def runningOnDevelopmentServer(urlStr):
+	if any(strToFind in urlStr for strToFind in ['127.0.0.1:5000', 'localhost:5000']):
+		return True
+	else:
+		return False
+
 
 def setupFlaskServer(flaskApp):
 
@@ -30,14 +36,12 @@ def setupFlaskServer(flaskApp):
 
 			if 'processToRun' in requestObj:
 
-				if any(strToFind in request.url_root for strToFind in ['127.0.0.1:5000', 'localhost:5000']):
-
+				if runningOnDevelopmentServer(request.url_root):
+					# exec('from math import *', globals(), globals())
+					# p(math.PI)
 					from reconcileArrays import reconcileArrays as reconcileArrays
-
 				else:
-
 					from .reconcileArrays import reconcileArrays as reconcileArrays
-				
 
 				reconcileArrays.reconcileArraysFunction()
 				return render_template(requestObj['htmlPathToLoad'], valueFromBackend=urlOfSheet)
