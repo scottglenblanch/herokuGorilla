@@ -44,7 +44,7 @@ def setupFlaskServer(flaskApp):
 					return render_template(requestObj['htmlPathToLoad'], valueFromBackend=urlOfSheet)
 					
 				else:
-					from .hiPackage import hiModule
+					import hiPackage
 					# reconcileArrays.reconcileArraysFunction(runningOnDevelopmentServer(request.url_root))
 					p('Not development server')
 					return render_template(requestObj['htmlPathToLoad'], valueFromBackend=urlOfSheet)
