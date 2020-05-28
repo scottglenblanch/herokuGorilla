@@ -38,11 +38,11 @@ def setupFlaskServer(flaskApp):
 				if runningOnDevelopmentServer(request.url_root):
 					# exec('from math import *', globals(), globals())
 					# p(math.PI)
-					from backendCode.reconcileArrays import reconcileArrays as reconcileArrays
+					from backend.reconcileArrays import reconcileArrays as reconcileArrays
 					reconcileArrays.reconcileArraysFunction(runningOnDevelopmentServer(request.url_root))
 					return render_template(requestObj['htmlPathToLoad'], valueFromBackend=urlOfSheet)
 				else:
-					from .backendCode.reconcileArrays import reconcileArrays as reconcileArrays
+					from .backend.reconcileArrays import reconcileArrays as reconcileArrays
 					reconcileArrays.reconcileArraysFunction(runningOnDevelopmentServer(request.url_root))
 					return render_template(requestObj['htmlPathToLoad'][:-1], valueFromBackend=urlOfSheet)
 
