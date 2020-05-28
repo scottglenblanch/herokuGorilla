@@ -20,7 +20,7 @@ def reconcileArraysFunction(runningOnDevelopmentServerBoolean):
     else:
         p('********************Not running on development server****************')
 
-    p(_myPyFunc.addToPath(Path("C:\\"), ['hi', 'hellow']))
+    return _myPyFunc.addToPath(Path("C:\\"), ['hi', 'hellow'])
 
     # arrayOfPartsToAddToPath = ['privateData', 'python', 'googleCredentials']
 
