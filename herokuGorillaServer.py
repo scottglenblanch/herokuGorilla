@@ -35,22 +35,10 @@ def setupFlaskServer(flaskApp):
 
 			if 'processToRun' in requestObj:
 
-				if runningOnDevelopmentServer(request.url_root):
-					# exec('from math import *', globals(), globals())
-					# p(math.PI)
-					from backend.reconcileArrays import reconcileArrays as reconcileArrays
-					reconcileArrays.reconcileArraysFunction(runningOnDevelopmentServer(request.url_root))
-					# p("Development server")
-					return render_template(requestObj['htmlPathToLoad'], valueFromBackend=urlOfSheet)
-					
-				else:
-					from backend.reconcileArrays import reconcileArrays as reconcileArrays
-					reconcileArrays.reconcileArraysFunction(runningOnDevelopmentServer(request.url_root))
-					# p('Not development server')
-					return render_template(requestObj['htmlPathToLoad'], valueFromBackend=urlOfSheet)
-					
-
-				
+				from backend.reconcileArrays import reconcileArrays as reconcileArrays
+				reconcileArrays.reconcileArraysFunction(runningOnDevelopmentServer(request.url_root))
+				# p('Not development server')
+				return render_template(requestObj['htmlPathToLoad'], valueFromBackend=urlOfSheet)
 
 			else:
 				return render_template(requestObj['htmlPathToLoad'], valueFromBackend=urlOfSheet)
