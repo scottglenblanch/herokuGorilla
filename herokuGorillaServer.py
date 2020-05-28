@@ -40,13 +40,13 @@ def setupFlaskServer(flaskApp):
 					# p(math.PI)
 					from backend.reconcileArrays import reconcileArrays as reconcileArrays
 					reconcileArrays.reconcileArraysFunction(runningOnDevelopmentServer(request.url_root))
-					p("Development server")
+					# p("Development server")
 					return render_template(requestObj['htmlPathToLoad'], valueFromBackend=urlOfSheet)
 					
 				else:
-					import hiPackage
-					# reconcileArrays.reconcileArraysFunction(runningOnDevelopmentServer(request.url_root))
-					p('Not development server')
+					from backend.reconcileArrays import reconcileArrays as reconcileArrays
+					reconcileArrays.reconcileArraysFunction(runningOnDevelopmentServer(request.url_root))
+					# p('Not development server')
 					return render_template(requestObj['htmlPathToLoad'], valueFromBackend=urlOfSheet)
 					
 
