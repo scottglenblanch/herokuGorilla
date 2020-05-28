@@ -97,10 +97,10 @@ def updateCells(gspSheetOfArray, arrayOfSheet):
 def getGspSpreadsheetObj(spreadsheetName):
     #return gspread spreadsheet object
 
-    pathToRepos = clydesdale.getPathUpFolderTree(pathToThisPythonFile, 'repos')
+    pathToRepos = _myPyFunc.getPathUpFolderTree(pathToThisPythonFile, 'repos')
     arrayOfPartsToAddToPath = ['privateData', 'python', 'googleCredentials', 'usingServiceAccount', 'jsonWithAPIKey.json']
 
-    pathToCredentialsFileServiceAccount = clydesdale.addToPath(pathToRepos, arrayOfPartsToAddToPath)
+    pathToCredentialsFileServiceAccount = _myPyFunc.addToPath(pathToRepos, arrayOfPartsToAddToPath)
 
     gspObj = gspread.service_account(filename=pathToCredentialsFileServiceAccount)
 

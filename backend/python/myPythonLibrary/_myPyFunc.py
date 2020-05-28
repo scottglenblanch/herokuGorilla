@@ -637,7 +637,7 @@ def mapData(map, valueToGive, valueToGiveColIndex, valueToGetColIndex):
 
     # pp(map)
 
-    # tickerSym = myPyFunc.vlookup(lotStockName, tickerMapUniqueExtractedValues)
+    # tickerSym = _myPyFunc.vlookup(lotStockName, tickerMapUniqueExtractedValues)
 
     for line in map:
         if valueToGive == line[valueToGiveColIndex]:
@@ -768,7 +768,7 @@ def addToPath(basePath, arrayOfPathParts):
 def getVariableNameStr(dictionaryOfVariables, variableToFind):
 
     return [k for k, v in dictionaryOfVariables if v == variableToFind][0]
-   
+
 
 
 
