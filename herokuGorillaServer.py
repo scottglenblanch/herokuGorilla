@@ -57,7 +57,7 @@ def setupFlaskServer(flaskApp):
 	if __name__ == '__main__':
 		
 		flaskAppLoadProcess = ''
-		flaskApp.run()
+		flaskApp.run(port=5000, debug=True, host='0.0.0.0')
 
 
 flaskApp = Flask(__name__, template_folder='./', static_folder='./frontend')
